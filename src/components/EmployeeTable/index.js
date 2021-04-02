@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import EmployeeTableItem from '../EmployeeTableItem';
 
 
-function EmployeeTable(props) {
+const EmployeeTable = (props) => {
 
   return(
     <Table striped bordered hover>
