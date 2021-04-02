@@ -10,14 +10,14 @@ const SortOptions = (props) => {
     <Fragment>
       <Col>
         <SortDropdown
-          title={`Sort By: ${sortCategory ? sortCategory : ''}`}
-          sortBy={handleSort}
+          sort={handleSort}
+          sortBy={sortCategory}
         />
       </Col>
       <Col>
         <OrderDropdown
-          title={`Order By: ${sortOrder ? sortOrder : ''}`}
-          orderBy={handleOrder}
+          orderBy={sortOrder}
+          order={handleOrder}
         />
       </Col>
     </Fragment>
