@@ -10,7 +10,9 @@ const App = () => {
   const [employees, setEmployees] = useState([]);
   const [sortCategory, setSortCat] = useState();
   const [sortOrder, setSortOrder] = useState('ascend');
-
+  const [filterCategory, setFilterCat] = useState();
+  const [filteWord, setFilterWord] = useState("");
+  // Hook when component is mounted
   useEffect(() => {
     // execute anonymus async function for getting employees
     (async() => {
@@ -23,32 +25,37 @@ const App = () => {
     })();
   },[]);
 
-  const sortEmployees = (category, order = sortOrder) => {
+  // Hook for sort related variables (sortCategory, sortOrder)
+  useEffect(() => {
+    if (!sortCategory) return;
     const sortByCat = {
-      "name": (a, b) =>
-        order === 'ascend'
+      'name': (a, b) =>
+        sortOrder === 'ascend'
           ? a.name.first.localeCompare(b.name.first)
           : b.name.first.localeCompare(a.name.first)
       ,
-      "username": (a, b) =>
-        order === 'ascend'
+      'username': (a, b) =>
+        sortOrder === 'ascend'
           ? a.login.username.localeCompare(b.login.username)
           : b.login.username.localeCompare(a.login.username)
     }
-    setSortCat(category);
-    setEmployees(employees.slice().sort(sortByCat[category]));
+    setEmployees(e => e.sort(sortByCat[sortCategory]));
+
+  },[sortCategory, sortOrder])
+
+  const handleSort = (category) => {
+    if(category !== sortCategory) setSortCat(category);
+  }    
+
+  const handleOrder = (order) => {
+    if (order !== sortOrder) setSortOrder(order);
   }
 
-  const handleSort = (category) => sortEmployees(category);    
+  const filter = () => {
 
-  const handleOrder = (selection) => {
-    console.log(`selection: ${selection}\nsortOrder: ${sortOrder}`);
-    if (selection !== sortOrder) {
-      console.log(`sortCategory: ${sortCategory}\nselection: ${selection}\nsortOrder: ${sortOrder}`);
-      setSortOrder(selection);
-      if (sortCategory) sortEmployees(sortCategory, selection);
-    }
   }
+
+  const handleFilterWord = (word) => setFilterWord(word)
 
   return (
     <Container>
