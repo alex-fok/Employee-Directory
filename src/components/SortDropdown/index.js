@@ -11,6 +11,7 @@ const SortDropDown = (props) => {
     >
       <DropdownItem eventKey='name'>Name</DropdownItem>
       <DropdownItem eventKey='username'>Username</DropdownItem>
+      <DropdownItem eventKey='email'>Email</DropdownItem>
     </DropdownButton>
   );
 }

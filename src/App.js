@@ -37,6 +37,10 @@ const App = () => {
       'username': {
         ascend: (a, b) => a.login.username.localeCompare(b.login.username),
         descend: (a, b) => b.login.username.localeCompare(a.login.username)
+      },
+      'email': {
+        ascend: (a, b) => a.email.localeCompare(b.email),
+        descend: (a, b) => b.email.localeCompare(a.email)
       }
     }
     return employees.slice().sort(sortByCat[category][order]);
@@ -45,7 +49,8 @@ const App = () => {
   const filterEmployees = (employees, keyword, category) => {
     const filter = {
       'name': e => e.name.first.toLowerCase().includes(keyword, 0),
-      'username': e => e.login.username.toLowerCase().includes(keyword, 0)
+      'username': e => e.login.username.toLowerCase().includes(keyword, 0),
+      'email': e => e.email.toLowerCase().includes(keyword, 0)
     }
     return employees.filter(filter[category])
   }

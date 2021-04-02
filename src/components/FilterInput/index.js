@@ -20,8 +20,9 @@ const FilterInput = (props) => {
             title={`Filter By ${props.filterCategory ? capitalize(props.filterCategory): ''}`}
             onSelect={props.handleFilterCategory}
           >
-            <DropdownItem eventKey='name'>name</DropdownItem>
-            <DropdownItem eventKey='username'>username</DropdownItem>
+            <DropdownItem eventKey='name'>Name</DropdownItem>
+            <DropdownItem eventKey='username'>Username</DropdownItem>
+            <DropdownItem eventKey='email'>Email</DropdownItem>
           </DropdownButton>
         </InputGroup.Append>
       </InputGroup>
