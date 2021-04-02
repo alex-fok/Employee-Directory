@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import EmployeeTable from './components/EmployeeTable';
 import SortOptions from './components/SortOptions';
+import FilterInput from './components/FilterInput';
 import './App.css';
 
 const App = () => {
@@ -40,6 +41,8 @@ const App = () => {
   }
 
   const handleSort = (category) => {
+    if (category === sortCategory) return;
+
     setSortCat(category);
     setEmployees(sortEmployees(category));
   }    
@@ -48,10 +51,12 @@ const App = () => {
     if (order === sortOrder) return;
     
     setSortOrder(order);
-    if (sortCategory) setEmployees(sortEmployees(sortCategory, order));
+    sortCategory
+      ? setEmployees(sortEmployees(sortCategory, order))
+      : setEmployees(e => e.reverse());
   }
 
-  const filter = () => {
+  const handleFilterCategory = () => {
     
   }
 
@@ -59,13 +64,14 @@ const App = () => {
 
   return (
     <Container>
-      <Row>
+      <Row className='my-3'>
         <SortOptions
           sortCategory={sortCategory}
-          handleSort={handleSort}
           sortOrder={sortOrder}
+          handleSort={handleSort}
           handleOrder={handleOrder}
         />
+        <FilterInput />
       </Row>
       <Row>
         <EmployeeTable employees={employees}/>
