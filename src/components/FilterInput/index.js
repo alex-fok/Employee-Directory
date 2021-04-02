@@ -16,7 +16,7 @@ const FilterInput = (props) => {
         />
         <InputGroup.Append>
           <DropdownButton
-            variant='secondary'
+            variant='outline-secondary'
             title={`Filter By ${props.filterCategory ? capitalize(props.filterCategory): ''}`}
             onSelect={props.handleFilterCategory}
           >

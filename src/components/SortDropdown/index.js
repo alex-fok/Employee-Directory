@@ -7,11 +7,10 @@ const SortDropDown = (props) => {
     <DropdownButton
       title={`Sort By ${props.sortBy ? capitalize(props.sortBy) : ''}`}
       onSelect={props.sort}
-      variant='success'
+      variant='outline-secondary'
     >
-      <DropdownItem eventKey='name' active={props.sortBy === 'name'}>Name</DropdownItem>
-      <DropdownItem eventKey='username' active={props.sortBy === 'username'}
-      >Username</DropdownItem>
+      <DropdownItem eventKey='name'>Name</DropdownItem>
+      <DropdownItem eventKey='username'>Username</DropdownItem>
     </DropdownButton>
   );
 }

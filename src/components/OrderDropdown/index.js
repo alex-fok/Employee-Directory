@@ -7,11 +7,11 @@ const OrderDropdown = (props) => {
     <DropdownButton
       title={`Order By ${capitalize(props.orderBy)}`}
       onSelect={props.order}
-      variant='success'
+      variant='outline-secondary'
       id="order"
     >
-      <DropdownItem eventKey='ascend' active={props.orderBy==='ascend'}>Ascend</DropdownItem>
-      <DropdownItem eventKey='descend' active={props.orderBy==='descend'}>Descend</DropdownItem>
+      <DropdownItem eventKey='ascend'>Ascend</DropdownItem>
+      <DropdownItem eventKey='descend'>Descend</DropdownItem>
     </DropdownButton>
   );
 }
