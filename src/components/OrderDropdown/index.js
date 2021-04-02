@@ -1,17 +1,17 @@
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import DropdownItem from 'react-bootstrap/DropdownItem';
-// import Dropdown from 'react-bootstrap/Dropdown';
+import capitalize from '../../utils/capitalize';
 
 const OrderDropdown = (props) => {
   return (
     <DropdownButton
-      title={props.title}
-      onSelect={props.orderBy}
-      variant='secondary'
+      title={`Order By ${capitalize(props.orderBy)}`}
+      onSelect={props.order}
+      variant='success'
       id="order"
     >
-      <DropdownItem eventKey="ascend">ascend</DropdownItem>
-      <DropdownItem eventKey="descend">descend</DropdownItem>
+      <DropdownItem eventKey='ascend' active={props.orderBy==='ascend'}>Ascend</DropdownItem>
+      <DropdownItem eventKey='descend' active={props.orderBy==='descend'}>Descend</DropdownItem>
     </DropdownButton>
   );
 }
