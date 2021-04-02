@@ -12,7 +12,7 @@ const App = () => {
   const [sortOrder, setSortOrder] = useState('ascend');
   const [filterCategory, setFilterCat] = useState();
   const [filteWord, setFilterWord] = useState("");
-  // Hook when component is mounted
+
   useEffect(() => {
     // execute anonymus async function for getting employees
     (async() => {
@@ -25,34 +25,34 @@ const App = () => {
     })();
   },[]);
 
-  // Hook for sort related variables (sortCategory, sortOrder)
-  useEffect(() => {
-    if (!sortCategory) return;
+  const sortEmployees = (category, order = sortOrder) => {
     const sortByCat = {
-      'name': (a, b) =>
-        sortOrder === 'ascend'
-          ? a.name.first.localeCompare(b.name.first)
-          : b.name.first.localeCompare(a.name.first)
-      ,
-      'username': (a, b) =>
-        sortOrder === 'ascend'
-          ? a.login.username.localeCompare(b.login.username)
-          : b.login.username.localeCompare(a.login.username)
+      'name': {
+        ascend:(a, b) => a.name.first.localeCompare(b.name.first),
+        descend: (a, b) => b.name.first.localeCompare(a.name.first)
+      },
+      'username': {
+        ascend: (a, b) => a.login.username.localeCompare(b.login.username),
+        descend: (a, b) => b.login.username.localeCompare(a.login.username)
+      }
     }
-    setEmployees(e => e.sort(sortByCat[sortCategory]));
-
-  },[sortCategory, sortOrder])
+    return employees.slice().sort(sortByCat[category][order]);
+  }
 
   const handleSort = (category) => {
-    if(category !== sortCategory) setSortCat(category);
+    setSortCat(category);
+    setEmployees(sortEmployees(category));
   }    
 
   const handleOrder = (order) => {
-    if (order !== sortOrder) setSortOrder(order);
+    if (order === sortOrder) return;
+    
+    setSortOrder(order);
+    if (sortCategory) setEmployees(sortEmployees(sortCategory, order));
   }
 
   const filter = () => {
-
+    
   }
 
   const handleFilterWord = (word) => setFilterWord(word)
