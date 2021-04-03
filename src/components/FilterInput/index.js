@@ -29,4 +29,5 @@ const FilterInput = ({filterCategory, handleFilterWord, handleFilterCategory}) =
     </Form>
   );
 }
+
 export default FilterInput;

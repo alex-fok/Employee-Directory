@@ -6,8 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import EmployeeTable from './components/EmployeeTable';
 
-
-
 const App = () => {
   // variable 'all' stores all employees fetched from API
   const [all, setAll] = useState([]);
@@ -112,4 +110,5 @@ const App = () => {
     </div>
   )
 }
+
 export default App;
