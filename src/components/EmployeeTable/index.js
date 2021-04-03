@@ -1,4 +1,3 @@
-
 import Table from 'react-bootstrap/Table';
 
 const EmployeeTableItem = ({ name, email, username, picture }) => {
