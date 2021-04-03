@@ -99,7 +99,6 @@ const App = () => {
           handleOrder={handleOrder}
         />
         <FilterInput
-          filterWord={filterWord}
           filterCategory={filterCategory}
           handleFilterWord={handleFilterWord}
           handleFilterCategory={handleFilterCategory}
