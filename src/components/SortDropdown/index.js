@@ -1,18 +1,16 @@
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import DropdownItem from 'react-bootstrap/DropdownItem';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import capitalize from '../../utils/capitalize';
 
 const SortDropDown = (props) => {
   return (
-    <DropdownButton
+    <NavDropdown
       title={`Sort By ${props.sortBy ? capitalize(props.sortBy) : ''}`}
       onSelect={props.sort}
-      variant='outline-secondary'
     >
-      <DropdownItem eventKey='name'>Name</DropdownItem>
-      <DropdownItem eventKey='username'>Username</DropdownItem>
-      <DropdownItem eventKey='email'>Email</DropdownItem>
-    </DropdownButton>
+      <NavDropdown.Item eventKey='name'>Name</NavDropdown.Item>
+      <NavDropdown.Item eventKey='username'>Username</NavDropdown.Item>
+      <NavDropdown.Item eventKey='email'>Email</NavDropdown.Item>
+    </NavDropdown>
   );
 }
 export default SortDropDown;
