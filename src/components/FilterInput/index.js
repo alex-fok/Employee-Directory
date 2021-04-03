@@ -1,13 +1,13 @@
+import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import DropdownItem from 'react-bootstrap/DropdownItem';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Col from 'react-bootstrap/Col';
 import capitalize from '../../utils/capitalize';
 
 const FilterInput = ({filterCategory, handleFilterWord, handleFilterCategory}) => {
   return (
-    <Col sm={5}>
+    <Form inline>
       <InputGroup>
         <FormControl
           type='text'
@@ -26,7 +26,7 @@ const FilterInput = ({filterCategory, handleFilterWord, handleFilterCategory}) =
           </DropdownButton>
         </InputGroup.Append>
       </InputGroup>
-    </Col>
+    </Form>
   );
 }
 export default FilterInput;
