@@ -5,20 +5,20 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Col from 'react-bootstrap/Col';
 import capitalize from '../../utils/capitalize';
 
-const FilterInput = (props) => {
+const FilterInput = ({filterCategory, handleFilterWord, handleFilterCategory}) => {
   return (
     <Col sm={5}>
       <InputGroup>
         <FormControl
           type='text'
           placeholder='Keyword...'
-          onChange={e => props.handleFilterWord(e.target.value)}
+          onChange={e => handleFilterWord(e.target.value)}
         />
         <InputGroup.Append>
           <DropdownButton
             variant='outline-secondary'
-            title={`Filter By ${props.filterCategory ? capitalize(props.filterCategory): ''}`}
-            onSelect={props.handleFilterCategory}
+            title={`Filter By ${filterCategory ? capitalize(filterCategory): ''}`}
+            onSelect={handleFilterCategory}
           >
             <DropdownItem eventKey='name'>Name</DropdownItem>
             <DropdownItem eventKey='username'>Username</DropdownItem>

@@ -1,10 +1,18 @@
 
 import Table from 'react-bootstrap/Table';
-import EmployeeTableItem from '../EmployeeTableItem';
 
+const EmployeeTableItem = ({ name, email, username, picture }) => {
+  return (
+    <tr>
+      <td><img alt={username} src={picture}/></td>
+      <td>{username}</td>
+      <td>{`${name.first} ${name.last}`}</td>
+      <td>{email}</td>
+    </tr>
+  )
+}
 
 const EmployeeTable = (props) => {
-
   return(
     <Table striped bordered hover>
       <thead>
@@ -19,6 +27,10 @@ const EmployeeTable = (props) => {
         { props.employees.map((e, i) => 
           <EmployeeTableItem
             employee={e}
+            name={e.name}
+            email={e.email}
+            username={e.login.username}
+            picture={e.picture.medium}
             key={i}
           />
         ) }

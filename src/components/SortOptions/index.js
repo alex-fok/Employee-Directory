@@ -4,8 +4,7 @@ import Col from 'react-bootstrap/Col';
 import SortDropdown from '../SortDropdown';
 import OrderDropdown from '../OrderDropdown';
 
-const SortOptions = (props) => {
-  const {sortCategory, handleSort, sortOrder, handleOrder} = props;
+const SortOptions = ({sortCategory, handleSort, sortOrder, handleOrder}) => {
   return (
     <Fragment>
       <Col>
