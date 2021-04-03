@@ -1,5 +1,5 @@
 import axios from "axios";
 
-const getEmployeesAPI = () => axios.get("https://randomuser.me/api/?format=json&results=10");
+const getEmployeesAPI = () => axios.get("https://randomuser.me/api/?format=json&results=50");
 
 export default getEmployeesAPI;
