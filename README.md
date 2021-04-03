@@ -5,4 +5,4 @@ This application displays a table of employee directory. With the properties sel
 ![Employee Directory](./screenshots/screencapture-employee-directory.png)
 
 ## Live URL
-https://aqueous-reaches-86629.herokuapp.com/
+https://alex-fok.github.io/Employee-Directory/
