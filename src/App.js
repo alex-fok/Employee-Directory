@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import getEmployeeAPI from './utils/getEmployeesAPI';
+import Navigator from './components/Navigator';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import EmployeeTable from './components/EmployeeTable';
-import SortOptions from './components/SortOptions';
-import FilterInput from './components/FilterInput';
+
+
 
 const App = () => {
   // variable 'all' stores all employees fetched from API
@@ -48,9 +50,9 @@ const App = () => {
 
   const filterEmployees = (employees, keyword, category) => {
     const filter = {
-      'name': e => e.name.first.toLowerCase().includes(keyword, 0),
-      'username': e => e.login.username.toLowerCase().includes(keyword, 0),
-      'email': e => e.email.toLowerCase().includes(keyword, 0)
+      'name': e => e.name.first.toLowerCase().includes(keyword),
+      'username': e => e.login.username.toLowerCase().includes(keyword),
+      'email': e => e.email.toLowerCase().includes(keyword)
     }
     return employees.filter(filter[category])
   }
@@ -75,7 +77,7 @@ const App = () => {
     const word = input.trim().toLowerCase();
     setFilterWord(word.toLowerCase());
 
-    word.length > 2 && filterCategory
+    word.length > 0 && filterCategory
       ? setEmployees(prev => filterEmployees(prev, word, filterCategory))
       : setEmployees(all);
   }
@@ -85,29 +87,29 @@ const App = () => {
 
     setFilterCat(category);
     
-    if (filterWord.length > 2)
+    if (filterWord.length > 0)
       setEmployees(prev => filterEmployees(prev, filterWord, category));
   }
-
+  const navProps = {
+    sortCategory,
+    sortOrder,
+    filterCategory,
+    handleSort,
+    handleOrder,
+    handleFilterWord,
+    handleFilterCategory
+  }
   return (
-    <Container>
-      <Row className='my-3'>
-        <SortOptions
-          sortCategory={sortCategory}
-          sortOrder={sortOrder}
-          handleSort={handleSort}
-          handleOrder={handleOrder}
-        />
-        <FilterInput
-          filterCategory={filterCategory}
-          handleFilterWord={handleFilterWord}
-          handleFilterCategory={handleFilterCategory}
-        />
-      </Row>
-      <Row>
-        <EmployeeTable employees={employees}/>
-      </Row>
-    </Container>
+    <div>
+      <Navigator {...navProps}/>
+      <Container className='mt-5'>
+        <Row>
+          <Col>
+            <EmployeeTable employees={employees}/>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }
 export default App;
